@@ -4,4 +4,4 @@
 |----------------|----------------|
 |Person          |                |
 |Bike            |release_bike    |
-|"		 |is_working      |
+|"		 |is_working?     |
