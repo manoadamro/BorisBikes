@@ -3,5 +3,5 @@
 |Object          |Message         |
 |----------------|----------------|
 |Person          |                |
-|Bike            |release_bike    |
-|"		 |is_working?     |
+|Docking Station |release_bike    |
+|Bike		         |is_working?     |
