@@ -1,10 +1,14 @@
 # Diagram
 
+DockingStation
 
-## DockingStation
+  Bike
 
-	### - Bike
-
-		#### - is_working? 
+    is_working?
 	
-	### - release_bike
+  release_bike
+
+
+DockingStation __--->__ Bike __--- not nil --->__ is_working? __--- if true --->__ release_bike			   
+						 
+
