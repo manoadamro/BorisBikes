@@ -10,10 +10,17 @@ NameError: uninitialized constant DockingStation
 	from /usr/bin/irb:12:in <main>
 
 
-### Error Type: NameError
-### Message: uninitialized constant
-### Path: /usr/bin/irb:12:in
-### Error Number: 1
+### Error Type:
+NameError
+
+### Message:
+uninitialized constant
+
+### Path:
+/usr/bin/irb:12:in
+
+### Error Number:
+1
 
 ### Meaning:
 
