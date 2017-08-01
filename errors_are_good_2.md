@@ -1,4 +1,4 @@
-# Errors are Good
+# Errors are Good 2
 
 ### Input:
 
