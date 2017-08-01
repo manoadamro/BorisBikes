@@ -19,7 +19,7 @@ uninitialized constant
 ### Path:
 /usr/bin/irb:12:in
 
-### Error Number:
+### Line Number:
 1
 
 ### Meaning:
