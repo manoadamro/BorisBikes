@@ -5,9 +5,9 @@
 release_bike()
 
 ### Error:
-NoMethodError: undefined method `release_bike' for main:Object
+NoMethodError: undefined method release_bike for main:Object
 	from (irb):1
-	from /usr/bin/irb:12:in `<main>'
+	from /usr/bin/irb:12:in
 
 
 ### Error Type:
