@@ -1,8 +1,4 @@
-
-class Bike
-
-end
-
+require 'bike'
 
 class DockingStation
 

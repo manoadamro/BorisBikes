@@ -13,13 +13,13 @@ describe DockingStation do
 	  expect(docking_station).not_to eq(nil)
   end
 
-  it "release_bike should not return nil" do
+  it "docking station responds to 'release_bike'" do
 
     # define a variable for bike and fill with release_bike
-    bike =  DockingStation.new.release_bike
+    docking_station =  DockingStation.new
 
     # check that DockingStation.release_bike returns an object
-    expect(bike).not_to eq(nil)
+    expect(docking_station).to respond_to(:release_bike)
 
   end
 
