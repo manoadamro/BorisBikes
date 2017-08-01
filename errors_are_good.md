@@ -1,5 +1,10 @@
 # Errors are Good
 
+### Input:
+
+docking_station = DockingStation.new
+
+### Error:
 NameError: uninitialized constant DockingStation
 	from (irb):1
 	from /usr/bin/irb:12:in <main>
