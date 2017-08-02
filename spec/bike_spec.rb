@@ -26,4 +26,8 @@ describe Bike do
 
   end
 
+  it "should be able to be reported as broken" do
+    expect(subject.report_broken).to eq(subject.broken)
+  end
+
 end
