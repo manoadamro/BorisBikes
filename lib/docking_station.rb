@@ -1,5 +1,7 @@
 
-  class DockingStation
+class DockingStation
+
+  @bike
 
   # constants
   #@capacity
@@ -14,18 +16,24 @@
     @bikes = []
   end
 
-  def release_bike
+  def release_bike (count = 1)
+
+    return_bikes = []
 
     raise $no_bikes_available if empty?
 
     @bikes.each_with_index do |bike, index|
      if bike.working? then
        @bikes.delete_at(index)
-       puts "#{bike} (i:#{index}) released, #{@bikes.length} bikes left in the station."
-       return bike
+       return_bikes << bike
+
+       if return_bikes.length == count then
+         puts "#{return_bikes.length} bikes released"
+         puts "#{@bikes.length} bikes left in the station."
+         return return_bikes
+       end
      end
     end
-
     raise $no_bikes_available
   end
 
