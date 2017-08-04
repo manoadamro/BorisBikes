@@ -27,10 +27,17 @@ describe DockingStation do
 
   end
 
-  it "dock bike returns an array of bikes" do
+  it "dock bike returns an array" do
 
     subject.stock_bikes
     expect(subject.release_bike(2).class).to eq(Array)
+
+  end
+
+  it "dock bike returns an array of bike objects" do
+
+    subject.stock_bikes
+    expect(subject.release_bike(2)[0].class).to eq(Bike)
 
   end
 
