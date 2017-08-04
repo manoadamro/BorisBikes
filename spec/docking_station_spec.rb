@@ -19,16 +19,18 @@ describe DockingStation do
 
   end
 
-  it "release_bike should return a bike object" do
 
-    allow(bike).to receive(:class).and_return(Bike)
-    allow(bike).to receive(:working?).and_return(true)
+  it "dock bike returns a Bike instance" do
 
-    # dock bike in station
-    subject.dock_bike(bike)
+    subject.stock_bikes
+    expect(subject.release_bike(1).class).to eq(Bike)
 
-    # check that DockingStation.release_bike returns an object
-    expect(subject.release_bike.class).to eq(Bike)
+  end
+
+  it "dock bike returns an array of bikes" do
+
+    subject.stock_bikes
+    expect(subject.release_bike(2).class).to eq(Array)
 
   end
 
@@ -52,7 +54,8 @@ describe DockingStation do
   it "responds to 'dock_bike'" do
 
     # check that DockingStation.release_bike returns an object
-9
+    expect(subject).to respond_to(:dock_bike)
+
   end
 
   it "shows docked bikes at station" do

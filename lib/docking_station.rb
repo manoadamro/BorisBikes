@@ -30,7 +30,7 @@ class DockingStation
        if return_bikes.length == count then
          puts "#{return_bikes.length} bikes released"
          puts "#{@bikes.length} bikes left in the station."
-         return return_bikes
+         return (return_bikes.length == 1) ? return_bikes[0] : return_bikes
        end
      end
     end
