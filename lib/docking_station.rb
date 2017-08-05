@@ -7,7 +7,7 @@ class DockingStation
   #@capacity
   $station_full = "Docking station is full"
   $no_bikes_available = "No bikes available"
-
+  $not_a_bike = "That is not a bike!"
 
   attr_reader :bikes, :capacity
 
@@ -39,9 +39,13 @@ class DockingStation
 
   def dock_bike (bike, broken = false)
 
+    raise $not_a_bike if bike.class != Bike
+
     bike.report_broken if broken
 
-    if !full? then (@bikes << bike) && ("#{bike} has been docked")
+    if !full? then
+      @bikes << bike
+      puts "#{bike} has been docked"
     else raise $station_full end
   end
 

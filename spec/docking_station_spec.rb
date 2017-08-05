@@ -3,6 +3,7 @@ require 'docking_station'
 describe DockingStation do
 
   let(:bike) {double :bike}
+  let(:broken_bike) {double :bike}
 
   it "docking station should not be nil" do
 
@@ -20,21 +21,21 @@ describe DockingStation do
   end
 
 
-  it "dock bike returns a Bike instance" do
+  it "release bike returns a Bike instance" do
 
     subject.stock_bikes
     expect(subject.release_bike(1).class).to eq(Bike)
 
   end
 
-  it "dock bike returns an array" do
+  it "release bike returns an array" do
 
     subject.stock_bikes
     expect(subject.release_bike(2).class).to eq(Array)
 
   end
 
-  it "dock bike returns an array of bike objects" do
+  it "release bike returns an array of bike objects" do
 
     subject.stock_bikes
     expect(subject.release_bike(2)[0].class).to eq(Bike)
@@ -42,6 +43,10 @@ describe DockingStation do
   end
 
   it "dock bike increases array by exactly 1" do
+
+    allow(bike).to receive_messages(
+      :class => Bike
+    )
 
     count = subject.bikes.length
     subject.dock_bike (bike)
@@ -53,6 +58,10 @@ describe DockingStation do
 
   it "ensure added instance is the same" do
 
+    allow(bike).to receive_messages(
+      :class => Bike
+    )
+
     subject.dock_bike(bike)
     expect(subject.bikes.include? bike).to eq(true)
 
@@ -62,6 +71,17 @@ describe DockingStation do
 
     # check that DockingStation.release_bike returns an object
     expect(subject).to respond_to(:dock_bike)
+
+  end
+
+  it "only accepts bike objects" do
+
+    allow(bike).to receive_messages(
+      :report_broken => nil,
+      :working? => false,
+    )
+    # check that DockingStation.release_bike returns an object
+    expect{subject.dock_bike "Something"}.to raise_error $not_a_bike
 
   end
 
@@ -78,6 +98,10 @@ describe DockingStation do
   end
 
   it "shouldn't add bike when docking station is full" do
+
+    allow(bike).to receive_messages(
+      :class => Bike
+    )
 
     subject.stock_bikes(subject.capacity)
     expect{ subject.dock_bike(bike) }.to raise_error($station_full)
@@ -99,8 +123,11 @@ describe DockingStation do
 
   it "can report bike as broken when returning" do
 
-    allow(bike).to receive(:report_broken)
-    allow(bike).to receive(:working?).and_return(false)
+    allow(bike).to receive_messages(
+      :report_broken => nil,
+      :working? => false,
+      :class => Bike
+    )
 
     subject.dock_bike(bike, broken = true)
     expect(bike.working?).to eq(false)
@@ -108,8 +135,11 @@ describe DockingStation do
 
   it "does not release a broken bike" do
 
-    allow(bike).to receive(:report_broken)
-    allow(bike).to receive(:working?).and_return(false)
+    allow(bike).to receive_messages(
+      :report_broken => nil,
+      :working? => false,
+      :class => Bike
+    )
 
     (broken_bike = bike).report_broken
     subject.dock_bike(broken_bike)
@@ -118,12 +148,14 @@ describe DockingStation do
 
   it "accepts broken bikes" do
 
-    allow(bike).to receive(:report_broken)
-    allow(bike).to receive(:working?).and_return(false)
+    allow(bike).to receive_messages(
+      :report_broken => nil,
+      :working? => false,
+      :class => Bike
+    )
 
     (broken_bike = bike).report_broken
     subject.dock_bike(broken_bike)
     expect(subject.bikes.include? broken_bike).to eq(true)
   end
-
 end
