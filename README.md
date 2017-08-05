@@ -49,5 +49,5 @@ Bike
 
 Bikes are created with the following:
 
-  bike = Bike.new
+    bike = Bike.new
 
