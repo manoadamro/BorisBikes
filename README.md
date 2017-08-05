@@ -1,9 +1,5 @@
 # Boris Bikes
 
-
-
-# Usage
-
 DockingStation
 ---------
 
